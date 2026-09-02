@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Peter Cornillon, Emeritus Professor of Oceanography, University of Rhode Island Graduate School of Oceanography. Satellite sea surface temperature, ocean fronts, and scientific data systems.">
+<title>Cornillon Publications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+/* ---- tokens: light (default, un-stamped) ---- */
+:root{
+  --paper:#f1f4f5;
+  --surface:#ffffff;
+  --surface-2:#e9eef0;
+  --ink:#12242c;
+  --ink-2:#3d5560;
+  --muted:#6b838d;
+  --line:#d3dcdf;
+  --line-soft:#e4eaec;
+  --accent:#0d6b7d;
+  --accent-ink:#0a5766;
+  --accent-soft:#e0eef1;
+  --warm:#a8501e;
+  --focus:#0d6b7d;
+  --shadow:0 1px 2px rgba(18,36,44,.06), 0 8px 24px -16px rgba(18,36,44,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0b1a20;
+    --surface:#11262e;
+    --surface-2:#16303a;
+    --ink:#e7eff1;
+    --ink-2:#b2c6cc;
+    --muted:#7e979f;
+    --line:#22414c;
+    --line-soft:#1a343d;
+    --accent:#54b6c6;
+    --accent-ink:#7fcdd9;
+    --accent-soft:#123039;
+    --warm:#e29061;
+    --focus:#54b6c6;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0b1a20;
+  --surface:#11262e;
+  --surface-2:#16303a;
+  --ink:#e7eff1;
+  --ink-2:#b2c6cc;
+  --muted:#7e979f;
+  --line:#22414c;
+  --line-soft:#1a343d;
+  --accent:#54b6c6;
+  --accent-ink:#7fcdd9;
+  --accent-soft:#123039;
+  --warm:#e29061;
+  --focus:#54b6c6;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:var(--accent-ink);text-decoration-color:color-mix(in srgb,var(--accent) 40%,transparent);text-underline-offset:.18em}
+a:hover{text-decoration-color:var(--accent)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+
+h1,h2,h3{font-family:"Newsreader",Georgia,"Times New Roman",serif;font-weight:500;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,1.4rem + 2.4vw,3.05rem);line-height:1.08;letter-spacing:-.015em}
+h2{font-size:clamp(1.45rem,1.2rem + .8vw,1.8rem);line-height:1.2;letter-spacing:-.01em}
+h3{font-size:1.06rem;line-height:1.35;font-family:"IBM Plex Sans",sans-serif;font-weight:600;letter-spacing:-.005em}
+p{margin:0}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.688rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin:0;
+}
+
+/* ---- masthead ---- */
+.masthead{border-bottom:1px solid var(--line);background:var(--surface)}
+.masthead .wrap{
+  display:flex;flex-wrap:wrap;gap:1.25rem 2.5rem;
+  align-items:flex-end;justify-content:space-between;
+  padding-top:clamp(2.2rem,5vw,3.6rem);padding-bottom:clamp(1.5rem,3vw,2.1rem);
+}
+.identity{display:flex;flex-direction:column;gap:.5rem;max-width:34ch}
+.identity h1{margin-top:.15rem}
+.role{color:var(--ink-2);font-size:1.02rem;line-height:1.45}
+.role .sep{color:var(--line);padding:0 .15rem}
+.contact{
+  display:flex;flex-direction:column;gap:.34rem;
+  font-size:.875rem;color:var(--ink-2);
+}
+.contact .mono{font-size:.812rem;color:var(--muted)}
+
+/* ---- nav ---- */
+.sitenav{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}
+.sitenav .wrap{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.sitenav a{
+  font-size:.812rem;letter-spacing:.02em;color:var(--ink-2);
+  text-decoration:none;padding:.15rem 0;border-bottom:2px solid transparent;
+}
+.sitenav a:hover{color:var(--ink);border-bottom-color:var(--line)}
+.sitenav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* ---- page body ---- */
+main{padding-block:clamp(2.4rem,5vw,4rem) clamp(3rem,7vw,5.5rem)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(2.5rem,5vw,4rem)}
+@media (min-width:900px){
+  .cols{grid-template-columns:minmax(0,1fr) 17.5rem}
+}
+.stack{display:flex;flex-direction:column;gap:clamp(2.5rem,4.5vw,3.6rem)}
+
+section{display:flex;flex-direction:column;gap:1.05rem;scroll-margin-top:5rem}
+section > .eyebrow + h2{margin-top:-.55rem}
+.prose{display:flex;flex-direction:column;gap:.95rem;max-width:66ch;color:var(--ink-2);font-size:1.0rem}
+.prose strong{color:var(--ink);font-weight:600}
+.lede{font-size:1.09rem;line-height:1.58;color:var(--ink)}
+
+hr.rule{border:0;border-top:1px solid var(--line-soft);margin:0}
+
+/* ---- threads ---- */
+.threads{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft)}
+.thread{
+  display:grid;gap:.3rem .0rem;
+  padding:1.15rem 0;border-bottom:1px solid var(--line-soft);
+}
+.thread h3{color:var(--ink)}
+.thread p{color:var(--ink-2);font-size:.94rem;max-width:64ch}
+.thread .tagline{
+  font-family:"IBM Plex Mono",monospace;font-size:.688rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.15rem;
+}
+
+/* ---- resource cards ---- */
+.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  padding:1.15rem 1.2rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;
+  box-shadow:var(--shadow);
+}
+.card h3{color:var(--ink)}
+.card p{font-size:.875rem;color:var(--ink-2)}
+.card .link{font-size:.812rem;margin-top:.15rem}
+
+/* ---- definition rows (CV) ---- */
+.rows{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft)}
+.row{
+  display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:.35rem 1.25rem;
+  padding:.72rem 0;border-bottom:1px solid var(--line-soft);align-items:baseline;
+}
+.row .yr{
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;letter-spacing:.01em;white-space:nowrap;
+}
+.row .what{font-size:.94rem;color:var(--ink-2)}
+.row .what b{color:var(--ink);font-weight:600}
+@media (max-width:520px){
+  .row{grid-template-columns:minmax(0,1fr);gap:.15rem}
+}
+
+/* ---- aside rail ---- */
+.rail{display:flex;flex-direction:column;gap:1.75rem;font-size:.875rem}
+@media (min-width:900px){
+  .rail{position:sticky;top:4.2rem;align-self:start;max-height:calc(100vh - 6rem);overflow-y:auto}
+}
+.rail-block{display:flex;flex-direction:column;gap:.5rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line-soft)}
+.rail-block:last-child{border-bottom:0;padding-bottom:0}
+.rail-block ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.42rem}
+.rail-block li{color:var(--ink-2);line-height:1.45}
+.rail-block .k{
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.stat{display:flex;flex-direction:column;gap:.1rem}
+.stat .n{font-family:"Newsreader",Georgia,serif;font-size:1.6rem;line-height:1;color:var(--ink)}
+.stat .l{font-size:.812rem;color:var(--muted)}
+.stats{display:flex;flex-direction:column;gap:.9rem}
+
+.note{
+  font-size:.812rem;color:var(--muted);border-left:2px solid var(--warm);
+  padding-left:.85rem;line-height:1.5;
+}
+
+/* ---- publications ---- */
+.filterbar{
+  position:sticky;top:2.95rem;z-index:15;background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.filterbar .wrap{
+  display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;align-items:center;
+  padding-top:.85rem;padding-bottom:.85rem;
+}
+.search{position:relative;flex:1 1 16rem;max-width:26rem}
+.search input{
+  width:100%;font:inherit;font-size:.9rem;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  padding:.5rem .7rem;
+}
+.search input::placeholder{color:var(--muted)}
+.decades{display:flex;flex-wrap:wrap;gap:.3rem}
+.decades a{
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.02em;
+  color:var(--ink-2);text-decoration:none;padding:.28rem .5rem;border-radius:3px;
+  border:1px solid transparent;
+}
+.decades a:hover{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--line)}
+.count{font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--muted);white-space:nowrap}
+
+.yeargroup{display:grid;grid-template-columns:minmax(0,1fr);gap:.4rem;scroll-margin-top:7rem}
+@media (min-width:760px){
+  .yeargroup{grid-template-columns:4.5rem minmax(0,1fr);gap:0 2rem}
+}
+.yeargroup > .y{
+  font-family:"IBM Plex Mono",monospace;font-size:.812rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;padding-top:1.15rem;letter-spacing:.02em;
+}
+@media (min-width:760px){
+  .yeargroup > .y{position:sticky;top:7rem;align-self:start}
+}
+.yeargroup > ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.pub{
+  padding:1.05rem 0;border-top:1px solid var(--line-soft);
+  font-size:.94rem;line-height:1.55;color:var(--ink-2);max-width:70ch;
+}
+.pub .t{color:var(--ink)}
+.pub .v{font-style:italic}
+.pub .self{color:var(--ink);font-weight:600}
+.pub a{font-family:"IBM Plex Mono",monospace;font-size:.75rem;word-break:break-word}
+.pub .kind{font-size:.75rem;color:var(--muted);font-style:normal;white-space:nowrap}
+.pub[hidden]{display:none}
+.yeargroup[hidden]{display:none}
+
+.pubintro{max-width:62ch;display:flex;flex-direction:column;gap:.9rem;color:var(--ink-2)}
+.forthcoming{
+  background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warm);
+  border-radius:3px;padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;
+  max-width:62ch;box-shadow:var(--shadow);
+}
+.forthcoming h3{color:var(--ink)}
+.forthcoming p{font-size:.94rem;color:var(--ink-2)}
+.forthcoming ol.prep{
+  list-style:none;counter-reset:prep;margin:.35rem 0 0;padding:0;
+  display:flex;flex-direction:column;gap:.7rem;
+}
+.forthcoming ol.prep li{
+  counter-increment:prep;position:relative;padding-left:1.9rem;
+  font-size:.9rem;line-height:1.5;color:var(--ink-2);
+}
+.forthcoming ol.prep li::before{
+  content:counter(prep);position:absolute;left:0;top:.05rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--warm);
+  font-variant-numeric:tabular-nums;
+}
+.forthcoming ol.prep .t{color:var(--ink)}
+.forthcoming ol.prep .self{color:var(--ink);font-weight:600}
+
+.empty{padding:3rem 0;color:var(--muted);font-size:.94rem}
+.empty[hidden]{display:none}
+
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);background:var(--surface)}
+footer .wrap{
+  display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;
+  padding-top:1.5rem;padding-bottom:2rem;font-size:.812rem;color:var(--muted);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="identity">
+      <p class="eyebrow">Peter Cornillon <span style="color:var(--line)">/</span> URI Graduate School of Oceanography</p>
+      <h1>Publications</h1>
+      <p class="role">Peer-reviewed articles, book chapters and proceedings, 1973&ndash;present</p>
+    </div>
+    <div class="contact">
+      <span><a href="index.html">&larr; Back to main page</a></span>
+      <span><a href="mailto:pcornillon@uri.edu">pcornillon@uri.edu</a></span>
+    </div>
+  </div>
+</header>
+
+<nav class="sitenav" aria-label="Sections">
+  <div class="wrap">
+    <a href="index.html">Main page</a>
+    <a href="index.html#research">Research</a>
+    <a href="index.html#data">Data &amp; Software</a>
+    <a href="#list" aria-current="page">Publications</a>
+    <a href="https://sst.uri.edu">sst.uri.edu</a>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:clamp(2rem,4vw,3rem);display:flex;flex-direction:column;gap:1.5rem">
+  <div class="pubintro">
+    <p>Eighty-two items, newest first. DOIs are linked where they exist. My name is set in bold
+    throughout so that co-authored work is easy to scan.</p>
+  </div>
+  <div class="forthcoming">
+    <h3>In preparation</h3>
+    <p>Three papers are in preparation and are expected to be submitted before the end of 2026.
+    Work now underway is expected to produce two more shortly after.</p>
+    <ol class="prep">
+      <li><span class="self">Cornillon, P.</span>, Shen, C., Mazumder, A. and Prochaska, J. X. &mdash;
+      <span class="t">An improved MODIS L2 R2019 sea surface temperature dataset.</span></li>
+      <li>Mazumder, A. and <span class="self">Cornillon, P.</span> &mdash;
+      <span class="t">A Level-2 three-way error analysis of AMSR-E, MODIS, and in-situ sea surface
+      temperature observations over the full AMSR-E record.</span></li>
+      <li>Mazumder, A., <span class="self">Cornillon, P.</span>, Puggioni, G. and Alvarez, M. &mdash;
+      <span class="t">Characterization of correlated noise in the difference between AMSR-E and
+      MODIS sea surface temperature fields.</span></li>
+    </ol>
+  </div>
+</div>
+
+<div class="filterbar">
+  <div class="wrap">
+    <div class="search">
+      <label class="sr-only" for="q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Filter publications</label>
+      <input id="q" type="search" placeholder="Filter by author, title, or journal&hellip;" autocomplete="off">
+    </div>
+    <nav class="decades" aria-label="Jump to decade">
+      <a href="#y2026">2020s</a>
+      <a href="#y2019">2010s</a>
+      <a href="#y2009">2000s</a>
+      <a href="#y1999">1990s</a>
+      <a href="#y1989">1980s</a>
+      <a href="#y1977">1970s</a>
+    </nav>
+    <span class="count" id="count" aria-live="polite">83 publications</span>
+  </div>
+</div>
+
+<main id="list">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:0">
+
+    <section class="yeargroup" id="y2026"><div class="y">2026</div><ol>
+      <li class="pub"><span class="self">Cornillon, P.</span> and Prochaska, J. X. (2026). <span class="t">The Agentic Professor: exploring GenAI-supported futures in higher education.</span> <span class="v">EDUCAUSE Review</span>. In press.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2025"><div class="y">2025</div><ol>
+      <li class="pub">Woo, H.-J., Park, K.-A. and <span class="self">Cornillon, P.</span> (2025). <span class="t">Diurnal variability of submesoscale chlorophyll-a fronts revealed by hourly geostationary satellite observations.</span> <span class="v">Geophysical Research Letters</span>. <a href="https://doi.org/10.1029/2025GL117201">doi:10.1029/2025GL117201</a></li>
+      <li class="pub">Park, K.-A., Woo, H.-J. and <span class="self">Cornillon, P.</span> (2025). <span class="t">Unprecedented hourly geostationary ocean color satellite observations.</span> <span class="v">Communications Earth &amp; Environment</span>. In review.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2024"><div class="y">2024</div><ol>
+      <li class="pub">González-Haro, C., Isern-Fontanet, J., Turiel, A., Merchant, C. J. and <span class="self">Cornillon, P.</span> (2024). <span class="t">Structural and dynamical quality assessment of gap-filled sea surface temperature products.</span> <span class="v">Earth and Space Science</span> 11, e2023EA003088. <a href="https://doi.org/10.1029/2023EA003088">doi:10.1029/2023EA003088</a></li>
+      <li class="pub">Agabin, A., Prochaska, J. X., <span class="self">Cornillon, P.</span> and Buckingham, C. E. (2024). <span class="t">Mitigating masked pixels in climate-critical datasets.</span> <span class="v">Remote Sensing</span> 16(13), 2439. <a href="https://doi.org/10.3390/rs16132439">doi:10.3390/rs16132439</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2023"><div class="y">2023</div><ol>
+      <li class="pub">Prochaska, J. X., Guo, E., <span class="self">Cornillon, P. C.</span> and Buckingham, C. E. (2023). <span class="t">The fundamental patterns of sea surface temperature.</span> <span class="v">IEEE Transactions on Geoscience and Remote Sensing</span> 61. <a href="https://doi.org/10.1109/TGRS.2023.3300272">doi:10.1109/TGRS.2023.3300272</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2022"><div class="y">2022</div><ol>
+      <li class="pub">Chen, Y., Qiu, D., <span class="self">Cornillon, P.</span> and Wu, M. (2022). <span class="t">Chlorophyll bloom enhanced by a mesoscale eddy in the western South China Sea.</span> <span class="v">Frontiers of Earth Science</span>. <a href="https://doi.org/10.1007/s11707-022-0984-3">doi:10.1007/s11707-022-0984-3</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2021"><div class="y">2021</div><ol>
+      <li class="pub">Prochaska, J. X., <span class="self">Cornillon, P. C.</span> and Reiman, D. (2021). <span class="t">Deep learning of sea surface temperature patterns to identify ocean extremes.</span> <span class="v">Remote Sensing</span> 13(4), 744. <a href="https://doi.org/10.3390/rs13040744">doi:10.3390/rs13040744</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2019"><div class="y">2019</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Firing, E., Thompson, A. F., Ivanov, L. M., Kamenkovich, I., Buckingham, C. and Afanasyev, Y. D. (2019). <span class="t">Oceans.</span> In <span class="v">Zonal Jets: Phenomenology, Genesis, and Physics</span> (Galperin, B. and Read, P. L., eds), ch. 4, pp. 46&ndash;71. Cambridge University Press. <a href="https://doi.org/10.1017/9781107358225.003">doi:10.1017/9781107358225.003</a></li>
+      <li class="pub">Boussidi, B., <span class="self">Cornillon, P.</span>, Puggioni, G. and Gentemann, C. (2019). <span class="t">Determining the AMSR-E SST footprint from co-located MODIS SSTs.</span> <span class="v">Remote Sensing</span> 11, 715. <a href="https://doi.org/10.3390/rs11060715">doi:10.3390/rs11060715</a></li>
+      <li class="pub">Wu, F., <span class="self">Cornillon, P.</span>, Guan, L. and Kilpatrick, K. (2019). <span class="t">Long-term variations in the pixel-to-pixel variability of NOAA AVHRR SST fields from 1982 to 2015.</span> <span class="v">Remote Sensing</span> 11(7), 844. <a href="https://doi.org/10.3390/rs11070844">doi:10.3390/rs11070844</a></li>
+      <li class="pub">Smith, L., <span class="self">Cornillon, P.</span>, Rudnickas, D. and Mouw, C. B. (2019). <span class="t">Evidence of environmental changes caused by Chinese island-building.</span> <span class="v">Scientific Reports</span> 9, 5295. <a href="https://doi.org/10.1038/s41598-019-41659-3">doi:10.1038/s41598-019-41659-3</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2018"><div class="y">2018</div><ol>
+      <li class="pub">Park, K.-A., Lee, M.-S., Park, J.-E., Ullman, D., <span class="self">Cornillon, P. C.</span> and Park, Y.-J. (2018). <span class="t">Surface currents from hourly variations of suspended particulate matter from Geostationary Ocean Color Imager data.</span> <span class="v">International Journal of Remote Sensing</span> 39, 1929&ndash;1949. <a href="https://doi.org/10.1080/01431161.2017.1416699">doi:10.1080/01431161.2017.1416699</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2017"><div class="y">2017</div><ol>
+      <li class="pub">Wu, F., <span class="self">Cornillon, P.</span>, Boussidi, B. and Guan, L. (2017). <span class="t">Determining the pixel-to-pixel uncertainty in satellite-derived SST fields.</span> <span class="v">Remote Sensing</span> 9. <a href="https://doi.org/10.3390/rs9090877">doi:10.3390/rs9090877</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2016"><div class="y">2016</div><ol>
+      <li class="pub">Park, J.-E., Park, K.-A., Ullman, D. S., <span class="self">Cornillon, P. C.</span> and Park, Y.-J. (2016). <span class="t">Observation of diurnal variations in mesoscale eddy sea-surface currents using GOCI data.</span> <span class="v">Remote Sensing Letters</span> 7, 1131&ndash;1140. <a href="https://doi.org/10.1080/2150704X.2016.1219423">doi:10.1080/2150704X.2016.1219423</a></li>
+      <li class="pub">Schloesser, F., <span class="self">Cornillon, P. C.</span>, Donohue, K., Boussidi, B. and Iskin, E. (2016). <span class="t">Evaluation of thermosalinograph and VIIRS data for the characterization of near-surface temperature fields.</span> <span class="v">Journal of Atmospheric and Oceanic Technology</span> 33, 1843&ndash;1858. <a href="https://doi.org/10.1175/JTECH-D-15-0180.1">doi:10.1175/JTECH-D-15-0180.1</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2015"><div class="y">2015</div><ol>
+      <li class="pub">Chang, Y. and <span class="self">Cornillon, P. C.</span> (2015). <span class="t">A comparison of satellite-derived sea surface temperature fronts using two edge detection algorithms.</span> <span class="v">Deep-Sea Research Part II</span> 119, 40&ndash;47. <a href="https://doi.org/10.1016/j.dsr2.2013.12.001">doi:10.1016/j.dsr2.2013.12.001</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2014"><div class="y">2014</div><ol>
+      <li class="pub">Buckingham, C. E., <span class="self">Cornillon, P. C.</span>, Schloesser, F. and Obenour, K. M. (2014). <span class="t">Global observations of quasi-zonal bands in microwave sea surface temperature.</span> <span class="v">Journal of Geophysical Research</span> 119, 4840&ndash;4866. <a href="https://doi.org/10.1002/2014JC010088">doi:10.1002/2014JC010088</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2013"><div class="y">2013</div><ol>
+      <li class="pub">Buckingham, C. E. and <span class="self">Cornillon, P. C.</span> (2013). <span class="t">The contribution of eddies to striations in absolute dynamic topography.</span> <span class="v">Journal of Geophysical Research</span> 118, 448&ndash;461. <a href="https://doi.org/10.1029/2012JC008231">doi:10.1029/2012JC008231</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2011"><div class="y">2011</div><ol>
+      <li class="pub">Altintas, I., Crawl, D., Crosby, C. J. and <span class="self">Cornillon, P. C.</span> (2011). <span class="t">Scientific workflows for the geosciences: an emerging approach to building integrated data analysis systems.</span> In <span class="v">Geoinformatics: Cyberinfrastructure for the Solid Earth Sciences</span> (Keller, G. R. and Baru, C., eds), pp. 237&ndash;250. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511976308.016">doi:10.1017/CBO9780511976308.016</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2010"><div class="y">2010</div><ol>
+      <li class="pub">Casey, K. S., Brandon, T. B., <span class="self">Cornillon, P. C.</span> and Evans, R. (2010). <span class="t">The past, present, and future of the AVHRR Pathfinder SST program.</span> In <span class="v">Oceanography from Space: Revisited</span>, pp. 273&ndash;287. Springer, Dordrecht. <a href="https://doi.org/10.1007/978-90-481-8681-5_16">doi:10.1007/978-90-481-8681-5_16</a></li>
+      <li class="pub">Barseghian, D., Altintas, I., Jones, M. B., Crawl, D., Potter, N., Gallagher, J., <span class="self">Cornillon, P. C.</span>, Schildhauer, M., Borer, E. T., Seabloom, E. W. and Hosseini, P. R. (2010). <span class="t">Workflows and extensions to the Kepler scientific workflow system to support environmental sensor data access and analysis.</span> <span class="v">Ecological Informatics</span> 5, 42&ndash;50. <a href="https://doi.org/10.1016/j.ecoinf.2009.08.008">doi:10.1016/j.ecoinf.2009.08.008</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2009"><div class="y">2009</div><ol>
+      <li class="pub">Chassignet, E. P., Hurlburt, H., Metzger, E. J., Smedstad, O., Cummings, J., Halliwell, G., Bleck, R., Baraille, R., Wallcraft, A., Lozano, C., Tolman, H., Srinivasan, A., Hankin, S., <span class="self">Cornillon, P. C.</span>, Weisberg, R., Barth, A., He, R., Werner, F. and Wilkin, J. (2009). <span class="t">US GODAE: global ocean prediction with the HYbrid Coordinate Ocean Model (HYCOM).</span> <span class="v">Oceanography</span> 22, 64&ndash;75. <a href="https://doi.org/10.5670/oceanog.2009.39">doi:10.5670/oceanog.2009.39</a></li>
+      <li class="pub">Blower, J. D., Blanc, F., Clancy, M., <span class="self">Cornillon, P. C.</span>, Donlon, C., Hacker, P., Haines, K., Hankin, S., Loubrieu, T., Pouliquen, S., Price, M., Pugh, T. and Srinivasan, A. (2009). <span class="t">Serving GODAE data and products to the ocean community.</span> <span class="v">Oceanography</span> 22, 70&ndash;79. <a href="https://doi.org/10.5670/oceanog.2009.67">doi:10.5670/oceanog.2009.67</a></li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Adams, J., Blumenthal, M. B., Chassignet, E., Davis, E., Hankin, S., Kinter, J., Mendelssohn, R., Potemra, J. T. and Srinivasan, A. (2009). <span class="t">NVODS and the development of OPeNDAP.</span> <span class="v">Oceanography</span> 22, 116&ndash;127. <a href="https://doi.org/10.5670/oceanog.2009.43">doi:10.5670/oceanog.2009.43</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2008"><div class="y">2008</div><ol>
+      <li class="pub">Small, R. J., deSzoeke, S. P., Xie, S. P., O&rsquo;Neill, L., Seo, H., Song, Q., <span class="self">Cornillon, P. C.</span>, Spall, M. and Minobe, S. (2008). <span class="t">Air&ndash;sea interaction over ocean fronts and eddies.</span> <span class="v">Dynamics of Atmospheres and Oceans</span> 45, 274&ndash;319. <a href="https://doi.org/10.1016/j.dynatmoce.2008.01.001">doi:10.1016/j.dynatmoce.2008.01.001</a></li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span> and Eichmann, A. (2008). <span class="t">Using satellite-derived SST fronts to evaluate an eddy resolving numerical circulation model.</span> In <span class="v">IGARSS 2008 &mdash; 2008 IEEE International Geoscience and Remote Sensing Symposium</span>, pp. II-5&ndash;II-8. IEEE. <a href="https://doi.org/10.1109/IGARSS.2008.4778913">doi:10.1109/IGARSS.2008.4778913</a> <span class="kind">&middot; Refereed conference proceedings paper</span></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2007"><div class="y">2007</div><ol>
+      <li class="pub">Ullman, D. S., <span class="self">Cornillon, P. C.</span> and Shan, Z. (2007). <span class="t">On the characteristics of subtropical fronts in the North Atlantic.</span> <span class="v">Journal of Geophysical Research</span> 112, C01010. <a href="https://doi.org/10.1029/2006JC003601">doi:10.1029/2006JC003601</a></li>
+      <li class="pub">Fan, X., <span class="self">Cornillon, P. C.</span>, Eichmann, A. and Sheremet, V. (2007). <span class="t">The effect of density stratification and a cape in a baroclinic western boundary current separation experiment.</span> <span class="v">McGill Science Undergraduate Research Journal</span> 2(1), 43&ndash;46.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2006"><div class="y">2006</div><ol>
+      <li class="pub">Song, Q., <span class="self">Cornillon, P. C.</span> and Hara, T. (2006). <span class="t">Surface wind response to oceanic fronts.</span> <span class="v">Journal of Geophysical Research</span> 111, C12006. <a href="https://doi.org/10.1029/2006JC003680">doi:10.1029/2006JC003680</a></li>
+      <li class="pub">Park, K.-A., Kim, K., <span class="self">Cornillon, P. C.</span> and Chung, J. Y. (2006). <span class="t">Relationship between satellite-observed cold water along the Primorye coast and sea ice in the East Sea (the Sea of Japan).</span> <span class="v">Geophysical Research Letters</span> 33. <a href="https://doi.org/10.1029/2005GL025611">doi:10.1029/2005GL025611</a></li>
+      <li class="pub">Park, K.-A., <span class="self">Cornillon, P. C.</span> and Codiga, D. L. (2006). <span class="t">Modification of surface winds near ocean fronts: effects of Gulf Stream rings on scatterometer (QuikSCAT, NSCAT) wind observations.</span> <span class="v">Journal of Geophysical Research</span> 111, C03021. <a href="https://doi.org/10.1029/2005JC003016">doi:10.1029/2005JC003016</a></li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Chamberlain, J. and Holloway, D. (2006). <span class="t">The system integrator in distributed data systems: the OPeNDAP Data Connector (ODC).</span> In <span class="v">Special Paper 397: Geoinformatics &mdash; Data to Knowledge</span> (Sinha, A. K., ed.), pp. 225&ndash;234. Geological Society of America.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2005"><div class="y">2005</div><ol>
+      <li class="pub">Park, K.-A., Chung, J. Y., Kim, K. and <span class="self">Cornillon, P. C.</span> (2005). <span class="t">Wind and bathymetric forcing of the annual sea surface temperature signal in the East (Japan) Sea.</span> <span class="v">Geophysical Research Letters</span> 32, L05610.</li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span> (2005). <span class="t">What is a data system, anyway?</span> <span class="v">EDUCAUSE Review</span> 40, 10&ndash;11.</li>
+      <li class="pub">Belkin, I. M. and <span class="self">Cornillon, P. C.</span> (2005). <span class="t">Bering Sea thermal fronts from Pathfinder data: seasonal and interannual variability.</span> <span class="v">Pacific Oceanography</span> 3, 6&ndash;20.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2004"><div class="y">2004</div><ol>
+      <li class="pub">Song, Q., Hara, T., <span class="self">Cornillon, P. C.</span> and Friehe, C. A. (2004). <span class="t">A comparison between observations and MM5 simulations of the marine atmospheric boundary layer across a temperature front.</span> <span class="v">Journal of Atmospheric and Oceanic Technology</span> 21, 170. <a href="https://doi.org/10.1175/1520-0426(2004)021%3C0170:ACBOAM%3E2.0.CO;2">doi:10.1175/1520-0426(2004)021&lt;0170:ACBOAM&gt;2.0.CO;2</a></li>
+      <li class="pub">Osychny, V. and <span class="self">Cornillon, P. C.</span> (2004). <span class="t">Properties of Rossby waves in the North Atlantic estimated from satellite data.</span> <span class="v">Journal of Physical Oceanography</span> 34, 61&ndash;76. <a href="https://doi.org/10.1175/1520-0485(2004)034%3C0061:PORWIT%3E2.0.CO;2">doi:10.1175/1520-0485(2004)034&lt;0061:PORWIT&gt;2.0.CO;2</a></li>
+      <li class="pub">Belkin, I. M. and <span class="self">Cornillon, P. C.</span> (2004). <span class="t">Surface thermal fronts of the Okhotsk Sea.</span> <span class="v">Pacific Oceanography</span> 2, 6&ndash;19.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2003"><div class="y">2003</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Gallagher, J. and Sgouros, T. (2003). <span class="t">OPeNDAP: accessing data in a distributed, heterogeneous environment.</span> <span class="v">Data Science Journal</span> 2, 159&ndash;169. <a href="https://doi.org/10.2481/dsj.2.164">doi:10.2481/dsj.2.164</a></li>
+      <li class="pub">Codiga, D. L. and <span class="self">Cornillon, P. C.</span> (2003). <span class="t">Effects of geographic variation in vertical mode structure on the sea surface topography, energy, and wind forcing of baroclinic Rossby waves.</span> <span class="v">Journal of Physical Oceanography</span> 33, 1219. <a href="https://doi.org/10.1175/1520-0485(2003)033%3C1219:EOGVIV%3E2.0.CO;2">doi:10.1175/1520-0485(2003)033&lt;1219:EOGVIV&gt;2.0.CO;2</a></li>
+      <li class="pub">Belkin, I. M. and <span class="self">Cornillon, P. C.</span> (2003). <span class="t">SST fronts of the Pacific coastal and marginal seas.</span> <span class="v">Pacific Oceanography</span> 1, 90&ndash;113.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2002"><div class="y">2002</div><ol>
+      <li class="pub">Park, K.-A. and <span class="self">Cornillon, P. C.</span> (2002). <span class="t">Stability-induced modification of sea surface winds over Gulf Stream rings.</span> <span class="v">Geophysical Research Letters</span> 29, 2211.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2001"><div class="y">2001</div><ol>
+      <li class="pub">Alfultis, M. A. and <span class="self">Cornillon, P. C.</span> (2001). <span class="t">A characterization of the North Atlantic STMW layer climatology using World Ocean Atlas 1994 data.</span> <span class="v">Journal of Atmospheric and Oceanic Technology</span> 18, 2021&ndash;2037. <a href="https://doi.org/10.1175/1520-0426(2001)018%3C2021:ACOTNA%3E2.0.CO;2">doi:10.1175/1520-0426(2001)018&lt;2021:ACOTNA&gt;2.0.CO;2</a></li>
+      <li class="pub">Casey, K. S. and <span class="self">Cornillon, P. C.</span> (2001). <span class="t">Global and regional sea surface temperature trends.</span> <span class="v">Journal of Climate</span> 14, 3801&ndash;3818. <a href="https://doi.org/10.1175/1520-0442(2001)014%3C3801:GARSST%3E2.0.CO;2">doi:10.1175/1520-0442(2001)014&lt;3801:GARSST&gt;2.0.CO;2</a></li>
+      <li class="pub">Alfultis, M. A. and <span class="self">Cornillon, P. C.</span> (2001). <span class="t">Annual and interannual changes in the North Atlantic STMW layer properties.</span> <span class="v">Journal of Physical Oceanography</span> 31, 2066&ndash;2086. <a href="https://doi.org/10.1175/1520-0485(2001)031%3C2066:AAICIT%3E2.0.CO;2">doi:10.1175/1520-0485(2001)031&lt;2066:AAICIT&gt;2.0.CO;2</a></li>
+      <li class="pub">Ullman, D. S. and <span class="self">Cornillon, P. C.</span> (2001). <span class="t">Continental shelf surface thermal fronts in winter off the northeast US coast.</span> <span class="v">Continental Shelf Research</span> 21, 1139&ndash;1156. <a href="https://doi.org/10.1016/S0278-4343(00)00107-2">doi:10.1016/S0278-4343(00)00107-2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y2000"><div class="y">2000</div><ol>
+      <li class="pub">Ullman, D. S. and <span class="self">Cornillon, P. C.</span> (2000). <span class="t">Evaluation of front detection methods for satellite-derived SST data using in situ observations.</span> <span class="v">Journal of Atmospheric and Oceanic Technology</span> 17, 1667&ndash;1675. <a href="https://doi.org/10.1175/1520-0426(2000)017%3C1667:EOFDMF%3E2.0.CO;2">doi:10.1175/1520-0426(2000)017&lt;1667:EOFDMF&gt;2.0.CO;2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1999"><div class="y">1999</div><ol>
+      <li class="pub">Ullman, D. S. and <span class="self">Cornillon, P. C.</span> (1999). <span class="t">Satellite-derived sea surface temperature fronts on the continental shelf off the northeast U.S. coast.</span> <span class="v">Journal of Geophysical Research</span> 104, 23459&ndash;23478. <a href="https://doi.org/10.1029/1999JC900133">doi:10.1029/1999JC900133</a></li>
+      <li class="pub">Casey, K. S. and <span class="self">Cornillon, P. C.</span> (1999). <span class="t">A comparison of satellite and in situ-based sea surface temperature climatologies.</span> <span class="v">Journal of Climate</span> 12, 1848&ndash;1863. <a href="https://doi.org/10.1175/1520-0442(1999)012%3C1848:ACOSAI%3E2.0.CO;2">doi:10.1175/1520-0442(1999)012&lt;1848:ACOSAI&gt;2.0.CO;2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1998"><div class="y">1998</div><ol>
+      <li class="pub">Ullman, D. S., Brown, J., <span class="self">Cornillon, P. C.</span> and Mavor, T. (1998). <span class="t">Surface temperature fronts in the Great Lakes.</span> <span class="v">Journal of Great Lakes Research</span> 24, 753&ndash;775. <a href="https://doi.org/10.1016/S0380-1330(98)70860-3">doi:10.1016/S0380-1330(98)70860-3</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1997"><div class="y">1997</div><ol>
+      <li class="pub">Everson, R., <span class="self">Cornillon, P. C.</span>, Sirovich, L. and Webber, A. (1997). <span class="t">An empirical eigenfunction analysis of sea surface temperatures in the western North Atlantic.</span> <span class="v">Journal of Physical Oceanography</span> 27, 468&ndash;479. <a href="https://doi.org/10.1175/1520-0485(1997)027%3C0468:AEEAOS%3E2.0.CO;2">doi:10.1175/1520-0485(1997)027&lt;0468:AEEAOS&gt;2.0.CO;2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1996"><div class="y">1996</div><ol>
+      <li class="pub">Cayula, J.-F. and <span class="self">Cornillon, P. C.</span> (1996). <span class="t">Cloud detection from a sequence of SST images.</span> <span class="v">Remote Sensing of Environment</span> 55, 80&ndash;88. <a href="https://doi.org/10.1016/0034-4257(95)00199-9">doi:10.1016/0034-4257(95)00199-9</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1994"><div class="y">1994</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Lee, T. and Fall, G. (1994). <span class="t">On the probability that a Gulf Stream meander crest detaches to form a warm core ring.</span> <span class="v">Journal of Physical Oceanography</span> 24, 159&ndash;171. <a href="https://doi.org/10.1175/1520-0485(1994)024%3C0159:OTPTAG%3E2.0.CO;2">doi:10.1175/1520-0485(1994)024&lt;0159:OTPTAG&gt;2.0.CO;2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1992"><div class="y">1992</div><ol>
+      <li class="pub">Gangopadhyay, A., <span class="self">Cornillon, P. C.</span> and Watts, D. R. (1992). <span class="t">A test of the Parsons&ndash;Veronis hypothesis on the separation of the Gulf Stream.</span> <span class="v">Journal of Physical Oceanography</span> 22, 1286&ndash;1301. <a href="https://doi.org/10.1175/1520-0485(1992)022%3C1286:ATOTPH%3E2.0.CO;2">doi:10.1175/1520-0485(1992)022&lt;1286:ATOTPH&gt;2.0.CO;2</a></li>
+      <li class="pub">Cayula, J.-F. P. and <span class="self">Cornillon, P. C.</span> (1992). <span class="t">Edge detection algorithm for SST images.</span> <span class="v">Journal of Atmospheric and Oceanic Technology</span> 9, 67&ndash;80. <a href="https://doi.org/10.1175/1520-0426(1992)009%3C0067:EDAFSI%3E2.0.CO;2">doi:10.1175/1520-0426(1992)009&lt;0067:EDAFSI&gt;2.0.CO;2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1991"><div class="y">1991</div><ol>
+      <li class="pub">Halliwell, G. R. Jr., Ro, Y. J. and <span class="self">Cornillon, P. C.</span> (1991). <span class="t">Westward-propagating SST anomalies and baroclinic eddies in the Sargasso Sea.</span> <span class="v">Journal of Physical Oceanography</span> 21, 1664&ndash;1680.</li>
+      <li class="pub">Halliwell, G. R. Jr., <span class="self">Cornillon, P. C.</span> and Byrne, D. A. (1991). <span class="t">Westward-propagating SST anomaly features in the Sargasso Sea, 1982&ndash;88.</span> <span class="v">Journal of Physical Oceanography</span> 21, 635&ndash;649. <a href="https://doi.org/10.1175/1520-0485(1991)021%3C0635:WPSAFI%3E2.0.CO;2">doi:10.1175/1520-0485(1991)021&lt;0635:WPSAFI&gt;2.0.CO;2</a></li>
+      <li class="pub">Hanson, H. P., <span class="self">Cornillon, P. C.</span>, Halliwell, G. R. Jr. and Halliwell, V. (1991). <span class="t">Climatological perspectives, oceanographic and meteorological, on variability in the subtropical convergence zone in the northwestern Atlantic.</span> <span class="v">Journal of Geophysical Research</span> 96, 8517&ndash;8529.</li>
+      <li class="pub">Cayula, J.-F. P., <span class="self">Cornillon, P. C.</span>, Holyer, R. and Peckinpaugh, S. (1991). <span class="t">Comparative study of two recent edge-detection algorithms designed to process sea-surface temperature fields.</span> <span class="v">IEEE Transactions on Geoscience and Remote Sensing</span> 29, 175&ndash;177.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1990"><div class="y">1990</div><ol>
+      <li class="pub">Halliwell, G. R. Jr. and <span class="self">Cornillon, P. C.</span> (1990). <span class="t">Large-scale SST variability in the western North Atlantic subtropical convergence zone during FASINEX. Part I: description of SST and wind stress fields.</span> <span class="v">Journal of Physical Oceanography</span> 20, 209&ndash;222. <a href="https://doi.org/10.1175/1520-0485(1990)020%3C0209:LSSVIT%3E2.0.CO;2">doi:10.1175/1520-0485(1990)020&lt;0209:LSSVIT&gt;2.0.CO;2</a></li>
+      <li class="pub">Halliwell, G. R. Jr. and <span class="self">Cornillon, P. C.</span> (1990). <span class="t">Large-scale SST variability in the western North Atlantic subtropical convergence zone during FASINEX. Part II: upper ocean heat balance and frontogenesis.</span> <span class="v">Journal of Physical Oceanography</span> 20, 223&ndash;234. <a href="https://doi.org/10.1175/1520-0485(1990)020%3C0223:LSSVIT%3E2.0.CO;2">doi:10.1175/1520-0485(1990)020&lt;0223:LSSVIT&gt;2.0.CO;2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1989"><div class="y">1989</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Weyer, R. and Flierl, G. (1989). <span class="t">Translational velocity of warm core rings relative to the slope water.</span> <span class="v">Journal of Physical Oceanography</span> 19, 1317&ndash;1332. <a href="https://doi.org/10.1175/1520-0485(1989)019%3C1317:TVOWCR%3E2.0.CO;2">doi:10.1175/1520-0485(1989)019&lt;1317:TVOWCR&gt;2.0.CO;2</a></li>
+      <li class="pub">Halliwell, G. R. Jr. and <span class="self">Cornillon, P. C.</span> (1989). <span class="t">Large-scale SST anomalies associated with subtropical fronts in the western North Atlantic during FASINEX.</span> <span class="v">Journal of Marine Research</span> 47, 757&ndash;775.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1988"><div class="y">1988</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Evans, D., Brown, O. B., Evans, R., Eden, P. and Brown, J. (1988). <span class="t">Processing, compression and transmission of satellite IR data for near-real-time use at sea.</span> <span class="v">Journal of Atmospheric and Oceanic Technology</span> 5, 320&ndash;327. <a href="https://doi.org/10.1175/1520-0426(1988)005%3C0320:PCATOS%3E2.0.CO;2">doi:10.1175/1520-0426(1988)005&lt;0320:PCATOS&gt;2.0.CO;2</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1987"><div class="y">1987</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span> and Watts, R. (1987). <span class="t">Satellite thermal infrared and inverted echo sounder determinations of the Gulf Stream northern edge.</span> <span class="v">Journal of Atmospheric and Oceanic Technology</span> 4, 712&ndash;723. <a href="https://doi.org/10.1175/1520-0426(1987)004%3C0712:STIAIE%3E2.0.CO;2">doi:10.1175/1520-0426(1987)004&lt;0712:STIAIE&gt;2.0.CO;2</a></li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Gilman, C., Stramma, L., Brown, O. B., Evans, R. and Brown, J. (1987). <span class="t">Processing and analysis of large volumes of satellite-derived thermal infrared data.</span> <span class="v">Journal of Geophysical Research</span> 92, 12993&ndash;13002. <a href="https://doi.org/10.1029/JC092iC12p12993">doi:10.1029/JC092iC12p12993</a></li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Stramma, L. and Price, J. F. (1987). <span class="t">Satellite measurements of sea surface cooling during hurricane Gloria.</span> <span class="v">Nature</span> 326, 373&ndash;375. <a href="https://doi.org/10.1038/326373a0">doi:10.1038/326373a0</a></li>
+      <li class="pub">Milkowski, G., <span class="self">Cornillon, P. C.</span> and Glenn, S. (1987). <span class="t">A warm core ring prediction program in support of offshore drilling activities.</span> <span class="v">Marine Technology Society Journal</span> 21, 22&ndash;32.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1986"><div class="y">1986</div><ol>
+      <li class="pub">Stramma, L., <span class="self">Cornillon, P. C.</span>, Weller, R. A., Price, J. F. and Briscoe, M. G. (1986). <span class="t">Large diurnal sea surface temperature variability: satellite and in situ measurements.</span> <span class="v">Journal of Physical Oceanography</span> 16, 827&ndash;837.</li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Evans, D. and Large, W. (1986). <span class="t">Warm outbreaks of the Gulf Stream into the Sargasso Sea.</span> <span class="v">Journal of Geophysical Research</span> 91, 6583&ndash;6596. <a href="https://doi.org/10.1029/JC091iC05p06583">doi:10.1029/JC091iC05p06583</a></li>
+      <li class="pub">Stramma, L., <span class="self">Cornillon, P. C.</span> and Price, J. F. (1986). <span class="t">Satellite observations of sea surface cooling by hurricanes.</span> <span class="v">Journal of Geophysical Research</span> 91, 5031&ndash;5035. <a href="https://doi.org/10.1029/JC091iC04p05031">doi:10.1029/JC091iC04p05031</a></li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span> (1986). <span class="t">The effect of the New England Seamounts on Gulf Stream meandering as observed from satellite IR imagery.</span> <span class="v">Journal of Physical Oceanography</span> 16, 386&ndash;389. <a href="https://doi.org/10.1175/1520-0485(1986)016%3C0386:TEOTNE%3E2.0.CO;2">doi:10.1175/1520-0485(1986)016&lt;0386:TEOTNE&gt;2.0.CO;2</a></li>
+      <li class="pub">Brown, O. B., <span class="self">Cornillon, P. C.</span>, Emmerson, S. R. and Carle, H. M. (1986). <span class="t">Gulf Stream warm rings: a statistical study of their behavior.</span> <span class="v">Deep Sea Research Part A</span> 33, 1459&ndash;1473.</li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Hickox, S. and Turton, H. M. (1986). <span class="t">Sea surface temperature charts for the southern New England fishing community.</span> <span class="v">Marine Technology Society Journal</span>.</li>
+      <li class="pub"><span class="self">Cornillon, P. C.</span> (1986). <span class="t">Satellite oceanography: a new tool for marine policy makers.</span> <span class="v">Marine Policy</span> 10, 57&ndash;60.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1985"><div class="y">1985</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span> and Stramma, L. (1985). <span class="t">The distribution of diurnal sea surface warming events in the western Sargasso Sea.</span> <span class="v">Journal of Geophysical Research</span> 90, 11811&ndash;11815. <a href="https://doi.org/10.1029/JC090iC06p11811">doi:10.1029/JC090iC06p11811</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1984"><div class="y">1984</div><ol>
+      <li class="pub">Bisagni, J. J. and <span class="self">Cornillon, P. C.</span> (1984). <span class="t">The synoptic sound-speed field of a warm-core Gulf Stream ring.</span> <span class="v">Journal of the Acoustical Society of America</span> 76, 532&ndash;539.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1981"><div class="y">1981</div><ol>
+      <li class="pub">Mollo-Christensen, E., <span class="self">Cornillon, P. C.</span> and Mascarenhas, A. da S. (1981). <span class="t">Method for estimation of ocean current velocity from satellite images.</span> <span class="v">Science</span> 212, 661&ndash;662. <a href="https://doi.org/10.1126/science.212.4495.661">doi:10.1126/science.212.4495.661</a></li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1977"><div class="y">1977</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span> and Keane, M. A. (1977). <span class="t">Simple model for simulating traffic noise spectra.</span> <span class="v">Journal of the Acoustical Society of America</span> 61, 739&ndash;743.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1976"><div class="y">1976</div><ol>
+      <li class="pub">Cermak, G. W. and <span class="self">Cornillon, P. C.</span> (1976). <span class="t">Multidimensional analyses of judgments about traffic noise.</span> <span class="v">Journal of the Acoustical Society of America</span> 59, 1412&ndash;1420.</li>
+    </ol></section>
+
+    <section class="yeargroup" id="y1973"><div class="y">1973</div><ol>
+      <li class="pub"><span class="self">Cornillon, P. C.</span>, Grindhammer, G., Klems, J. H., Mazur, P. O., Orear, J., Peoples, J., Rubinstein, R. and Faissler, W. (1973). <span class="t">Large-angle &pi;&minus; proton elastic scattering at 14 and 23 GeV/c.</span> <span class="v">Physical Review Letters</span> 30, 403&ndash;406. <a href="https://doi.org/10.1103/PhysRevLett.30.403">doi:10.1103/PhysRevLett.30.403</a></li>
+      <li class="pub">Rubinstein, R., <span class="self">Cornillon, P. C.</span>, Grindhammer, G., Klems, J. H., Mazur, P. O., Orear, J., Peoples, J. and Faissler, W. (1973). <span class="t">Large-angle &pi;+p and K+p elastic scattering at 13.8 GeV/c.</span> <span class="v">Physical Review Letters</span> 30, 1010&ndash;1012. <a href="https://doi.org/10.1103/PhysRevLett.30.1010">doi:10.1103/PhysRevLett.30.1010</a></li>
+    </ol></section>
+
+    <p class="empty" id="empty" hidden>No publications match that filter.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Peter Cornillon <span class="sep">&middot;</span> Graduate School of Oceanography, University of Rhode Island</span>
+    <span class="mono">Updated September 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.yeargroup'));
+  var pubs = Array.prototype.slice.call(document.querySelectorAll('.pub'));
+  pubs.forEach(function(p){ p.dataset.hay = p.textContent.toLowerCase(); });
+  var total = pubs.length;
+
+  function apply(){
+    var term = q.value.trim().toLowerCase();
+    var shown = 0;
+    groups.forEach(function(g){
+      var any = false;
+      Array.prototype.forEach.call(g.querySelectorAll('.pub'), function(p){
+        var hit = !term || p.dataset.hay.indexOf(term) !== -1;
+        p.hidden = !hit;
+        if (hit) { any = true; shown++; }
+      });
+      g.hidden = !any;
+    });
+    countEl.textContent = term
+      ? shown + ' of ' + total + ' publications'
+      : total + ' publications';
+    emptyEl.hidden = shown !== 0;
+  }
+  q.addEventListener('input', apply);
+  apply();
+})();
+</script>
+
+</body>
+</html>

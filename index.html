@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Peter Cornillon, Emeritus Professor of Oceanography, University of Rhode Island Graduate School of Oceanography. Satellite sea surface temperature, ocean fronts, and scientific data systems.">
+<title>Peter Cornillon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+/* ---- tokens: light (default, un-stamped) ---- */
+:root{
+  --paper:#f1f4f5;
+  --surface:#ffffff;
+  --surface-2:#e9eef0;
+  --ink:#12242c;
+  --ink-2:#3d5560;
+  --muted:#6b838d;
+  --line:#d3dcdf;
+  --line-soft:#e4eaec;
+  --accent:#0d6b7d;
+  --accent-ink:#0a5766;
+  --accent-soft:#e0eef1;
+  --warm:#a8501e;
+  --focus:#0d6b7d;
+  --shadow:0 1px 2px rgba(18,36,44,.06), 0 8px 24px -16px rgba(18,36,44,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0b1a20;
+    --surface:#11262e;
+    --surface-2:#16303a;
+    --ink:#e7eff1;
+    --ink-2:#b2c6cc;
+    --muted:#7e979f;
+    --line:#22414c;
+    --line-soft:#1a343d;
+    --accent:#54b6c6;
+    --accent-ink:#7fcdd9;
+    --accent-soft:#123039;
+    --warm:#e29061;
+    --focus:#54b6c6;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0b1a20;
+  --surface:#11262e;
+  --surface-2:#16303a;
+  --ink:#e7eff1;
+  --ink-2:#b2c6cc;
+  --muted:#7e979f;
+  --line:#22414c;
+  --line-soft:#1a343d;
+  --accent:#54b6c6;
+  --accent-ink:#7fcdd9;
+  --accent-soft:#123039;
+  --warm:#e29061;
+  --focus:#54b6c6;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:var(--accent-ink);text-decoration-color:color-mix(in srgb,var(--accent) 40%,transparent);text-underline-offset:.18em}
+a:hover{text-decoration-color:var(--accent)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+
+h1,h2,h3{font-family:"Newsreader",Georgia,"Times New Roman",serif;font-weight:500;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,1.4rem + 2.4vw,3.05rem);line-height:1.08;letter-spacing:-.015em}
+h2{font-size:clamp(1.45rem,1.2rem + .8vw,1.8rem);line-height:1.2;letter-spacing:-.01em}
+h3{font-size:1.06rem;line-height:1.35;font-family:"IBM Plex Sans",sans-serif;font-weight:600;letter-spacing:-.005em}
+p{margin:0}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.688rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin:0;
+}
+
+/* ---- masthead ---- */
+.masthead{border-bottom:1px solid var(--line);background:var(--surface)}
+.masthead .wrap{
+  display:flex;flex-wrap:wrap;gap:1.25rem 2.5rem;
+  align-items:flex-end;justify-content:space-between;
+  padding-top:clamp(2.2rem,5vw,3.6rem);padding-bottom:clamp(1.5rem,3vw,2.1rem);
+}
+.identity{display:flex;flex-direction:column;gap:.5rem;max-width:34ch}
+.identity h1{margin-top:.15rem}
+.role{color:var(--ink-2);font-size:1.02rem;line-height:1.45}
+.role .sep{color:var(--line);padding:0 .15rem}
+.contact{
+  display:flex;flex-direction:column;gap:.34rem;
+  font-size:.875rem;color:var(--ink-2);
+}
+.contact .mono{font-size:.812rem;color:var(--muted)}
+
+/* ---- nav ---- */
+.sitenav{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}
+.sitenav .wrap{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.sitenav a{
+  font-size:.812rem;letter-spacing:.02em;color:var(--ink-2);
+  text-decoration:none;padding:.15rem 0;border-bottom:2px solid transparent;
+}
+.sitenav a:hover{color:var(--ink);border-bottom-color:var(--line)}
+.sitenav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* ---- page body ---- */
+main{padding-block:clamp(2.4rem,5vw,4rem) clamp(3rem,7vw,5.5rem)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(2.5rem,5vw,4rem)}
+@media (min-width:900px){
+  .cols{grid-template-columns:minmax(0,1fr) 17.5rem}
+}
+.stack{display:flex;flex-direction:column;gap:clamp(2.5rem,4.5vw,3.6rem)}
+
+section{display:flex;flex-direction:column;gap:1.05rem;scroll-margin-top:5rem}
+section > .eyebrow + h2{margin-top:-.55rem}
+.prose{display:flex;flex-direction:column;gap:.95rem;max-width:66ch;color:var(--ink-2);font-size:1.0rem}
+.prose strong{color:var(--ink);font-weight:600}
+.lede{font-size:1.09rem;line-height:1.58;color:var(--ink)}
+
+hr.rule{border:0;border-top:1px solid var(--line-soft);margin:0}
+
+/* ---- threads ---- */
+.threads{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft)}
+.thread{
+  display:grid;gap:.3rem .0rem;
+  padding:1.15rem 0;border-bottom:1px solid var(--line-soft);
+}
+.thread h3{color:var(--ink)}
+.thread p{color:var(--ink-2);font-size:.94rem;max-width:64ch}
+.thread .tagline{
+  font-family:"IBM Plex Mono",monospace;font-size:.688rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.15rem;
+}
+
+/* ---- resource cards ---- */
+.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  padding:1.15rem 1.2rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;
+  box-shadow:var(--shadow);
+}
+.card h3{color:var(--ink)}
+.card p{font-size:.875rem;color:var(--ink-2)}
+.card .link{font-size:.812rem;margin-top:.15rem}
+
+/* ---- definition rows (CV) ---- */
+.rows{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft)}
+.row{
+  display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:.35rem 1.25rem;
+  padding:.72rem 0;border-bottom:1px solid var(--line-soft);align-items:baseline;
+}
+.row .yr{
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;letter-spacing:.01em;white-space:nowrap;
+}
+.row .what{font-size:.94rem;color:var(--ink-2)}
+.row .what b{color:var(--ink);font-weight:600}
+@media (max-width:520px){
+  .row{grid-template-columns:minmax(0,1fr);gap:.15rem}
+}
+
+/* ---- aside rail ---- */
+.rail{display:flex;flex-direction:column;gap:1.75rem;font-size:.875rem}
+@media (min-width:900px){
+  .rail{position:sticky;top:4.2rem;align-self:start;max-height:calc(100vh - 6rem);overflow-y:auto}
+}
+.rail-block{display:flex;flex-direction:column;gap:.5rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line-soft)}
+.rail-block:last-child{border-bottom:0;padding-bottom:0}
+.rail-block ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.42rem}
+.rail-block li{color:var(--ink-2);line-height:1.45}
+.rail-block .k{
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.stat{display:flex;flex-direction:column;gap:.1rem}
+.stat .n{font-family:"Newsreader",Georgia,serif;font-size:1.6rem;line-height:1;color:var(--ink)}
+.stat .l{font-size:.812rem;color:var(--muted)}
+.stats{display:flex;flex-direction:column;gap:.9rem}
+
+.note{
+  font-size:.812rem;color:var(--muted);border-left:2px solid var(--warm);
+  padding-left:.85rem;line-height:1.5;
+}
+
+/* ---- publications ---- */
+.filterbar{
+  position:sticky;top:2.95rem;z-index:15;background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.filterbar .wrap{
+  display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;align-items:center;
+  padding-top:.85rem;padding-bottom:.85rem;
+}
+.search{position:relative;flex:1 1 16rem;max-width:26rem}
+.search input{
+  width:100%;font:inherit;font-size:.9rem;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  padding:.5rem .7rem;
+}
+.search input::placeholder{color:var(--muted)}
+.decades{display:flex;flex-wrap:wrap;gap:.3rem}
+.decades a{
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.02em;
+  color:var(--ink-2);text-decoration:none;padding:.28rem .5rem;border-radius:3px;
+  border:1px solid transparent;
+}
+.decades a:hover{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--line)}
+.count{font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--muted);white-space:nowrap}
+
+.yeargroup{display:grid;grid-template-columns:minmax(0,1fr);gap:.4rem;scroll-margin-top:7rem}
+@media (min-width:760px){
+  .yeargroup{grid-template-columns:4.5rem minmax(0,1fr);gap:0 2rem}
+}
+.yeargroup > .y{
+  font-family:"IBM Plex Mono",monospace;font-size:.812rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;padding-top:1.15rem;letter-spacing:.02em;
+}
+@media (min-width:760px){
+  .yeargroup > .y{position:sticky;top:7rem;align-self:start}
+}
+.yeargroup > ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.pub{
+  padding:1.05rem 0;border-top:1px solid var(--line-soft);
+  font-size:.94rem;line-height:1.55;color:var(--ink-2);max-width:70ch;
+}
+.pub .t{color:var(--ink)}
+.pub .v{font-style:italic}
+.pub .self{color:var(--ink);font-weight:600}
+.pub a{font-family:"IBM Plex Mono",monospace;font-size:.75rem;word-break:break-word}
+.pub[hidden]{display:none}
+.yeargroup[hidden]{display:none}
+
+.pubintro{max-width:62ch;display:flex;flex-direction:column;gap:.9rem;color:var(--ink-2)}
+.forthcoming{
+  background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warm);
+  border-radius:3px;padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;
+  max-width:62ch;box-shadow:var(--shadow);
+}
+.forthcoming h3{color:var(--ink)}
+.forthcoming p{font-size:.94rem;color:var(--ink-2)}
+.forthcoming ol.prep{
+  list-style:none;counter-reset:prep;margin:.35rem 0 0;padding:0;
+  display:flex;flex-direction:column;gap:.7rem;
+}
+.forthcoming ol.prep li{
+  counter-increment:prep;position:relative;padding-left:1.9rem;
+  font-size:.9rem;line-height:1.5;color:var(--ink-2);
+}
+.forthcoming ol.prep li::before{
+  content:counter(prep);position:absolute;left:0;top:.05rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--warm);
+  font-variant-numeric:tabular-nums;
+}
+.forthcoming ol.prep .t{color:var(--ink)}
+.forthcoming ol.prep .self{color:var(--ink);font-weight:600}
+
+.empty{padding:3rem 0;color:var(--muted);font-size:.94rem}
+.empty[hidden]{display:none}
+
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);background:var(--surface)}
+footer .wrap{
+  display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;
+  padding-top:1.5rem;padding-bottom:2rem;font-size:.812rem;color:var(--muted);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="identity">
+      <p class="eyebrow">University of Rhode Island</p>
+      <h1>Peter&nbsp;Cornillon</h1>
+      <p class="role">Emeritus Professor of Oceanography <span class="sep">/</span> Graduate School of Oceanography</p>
+    </div>
+    <div class="contact">
+      <span><a href="mailto:pcornillon@uri.edu">pcornillon@uri.edu</a></span>
+      <span class="mono">+1 401 742 2911</span>
+      <span class="mono">Watkins Laboratory, Rm 112</span>
+      <span class="mono">Narragansett, RI 02882</span>
+    </div>
+  </div>
+</header>
+
+<nav class="sitenav" aria-label="Sections">
+  <div class="wrap">
+    <a href="#research">Research</a>
+    <a href="#opendap">OPeNDAP</a>
+    <a href="#data">Data &amp; Software</a>
+    <a href="#background">Background</a>
+    <a href="publications.html">Publications</a>
+    <a href="https://sst.uri.edu">sst.uri.edu</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap cols">
+    <div class="stack">
+
+      <section id="about">
+        <div class="prose">
+          <p class="lede">I study the ocean surface as satellites see it — the fronts, eddies and
+          temperature structure that thermal infrared and microwave sensors have been recording
+          for more than forty years — and I build the data systems that make those records usable
+          by other people.</p>
+          <p>I joined the University of Rhode Island in 1975, on the Ocean Engineering faculty,
+          and moved to the Oceanography faculty at the Graduate School of Oceanography in 1980.
+          I became emeritus in 2023. Emeritus at URI means I have stopped teaching; it does not
+          mean I have stopped doing science. I work on research full time, and I remain based
+          at GSO.</p>
+          <p>My training is not in oceanography. I took my B.S. in engineering physics and my Ph.D.
+          in experimental high energy physics, both at Cornell, and came to the ocean by way of
+          the instruments. That has shaped how I work ever since: most of my career has been spent
+          on the measurement itself — what the sensor actually recorded, how much of it is noise,
+          and whether the number you pull out of an archive means what you think it means.</p>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="research">
+        <p class="eyebrow">Current work</p>
+        <h2>What I am working on now</h2>
+        <div class="prose">
+          <p>Four threads, all of them active. The first two are the reason the archive described
+          below exists.</p>
+        </div>
+        <div class="threads">
+
+          <article class="thread">
+            <p class="tagline">Dataset reconstruction</p>
+            <h3>Rebuilding two decades of MODIS Level-2 sea surface temperature</h3>
+            <p>A four-year effort to reprocess the R2019 MODIS SST record from Terra and Aqua,
+            correcting problems in the delivered product that matter for anyone using the data to
+            look at gradients, fronts or long-term change. Processing ran in the cloud and touched
+            more than four million granules. The result &mdash; roughly 40 TB per satellite, about
+            80 TB in all &mdash; is served publicly and openly at
+            <a href="https://sst.uri.edu">sst.uri.edu</a>, and the paper documenting it is in final
+            preparation.</p>
+          </article>
+
+          <article class="thread">
+            <p class="tagline">Measurement uncertainty</p>
+            <h3>The structure of noise in satellite SST fields</h3>
+            <p>Satellite SST error is not white, and treating it as though it were quietly corrupts
+            every derived quantity that involves a derivative — gradients, fronts, and the
+            small-scale variability that mesoscale and submesoscale work depends on. Recent work
+            characterises correlated noise in the difference between coincident AMSR-E and MODIS
+            fields; earlier work established the pixel-to-pixel uncertainty in the AVHRR record
+            back to 1982.</p>
+          </article>
+
+          <article class="thread">
+            <p class="tagline">Ocean structure</p>
+            <h3>Fronts, rings and zonal structure in the surface ocean</h3>
+            <p>The long thread. The Cayula–Cornillon edge-detection algorithm came out of this work
+            in the early 1990s and is still the basis of much satellite frontal analysis; the same
+            line runs through Gulf Stream ring and meander statistics, wind response over SST
+            fronts, and quasi-zonal banding in the microwave SST field.</p>
+          </article>
+
+          <article class="thread">
+            <p class="tagline">Research methods</p>
+            <h3>Generative AI as a scientific instrument — and as a problem for universities</h3>
+            <p>I now do a substantial share of my analysis and software development in collaboration
+            with large language model agents, and the change in what one researcher can accomplish
+            has been large enough to be worth writing about. Separately, with J. X. Prochaska, I
+            have argued that higher education needs to take seriously how much of the teaching role
+            an agentic AI system could assume, and how soon &mdash; &ldquo;The Agentic Professor:
+            Exploring GenAI-Supported Futures in Higher Education,&rdquo; in press in
+            <em>EDUCAUSE Review</em>.</p>
+          </article>
+
+        </div>
+        <div class="forthcoming">
+          <h3>In preparation</h3>
+          <p>Three papers are currently in preparation and are expected to be submitted before the
+          end of 2026. Work now underway is expected to produce two more shortly after.</p>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="opendap">
+        <p class="eyebrow">1990&ndash;2005</p>
+        <h2>Distributed data systems and OPeNDAP</h2>
+        <div class="prose">
+          <p>For roughly fifteen years, from the early 1990s through the mid-2000s, the larger part
+          of my working life went into a problem that was not oceanography at all: how a scientist
+          at one institution could read a binary dataset held at another without first downloading
+          it, converting it, and hoping the two formats agreed.</p>
+          <p>I was PI on the development of what became the <strong>OPeNDAP data access
+          protocol</strong>, which lets a client open a remote dataset over the network as though
+          it were a local file, request only the subset it needs, and receive it in a form its own
+          software already understands. I served as president of the OPeNDAP project from 2000 to
+          2006. The related work of those years included the National Virtual Ocean Data System
+          (NVODS), serving GODAE data and products to the ocean community, the OPeNDAP Data
+          Connector, and the integration of remote data access into scientific workflow systems.</p>
+          <p>The protocol outlived the project that produced it. It is now a routine part of how
+          the earth science community distributes data &mdash; and it is what the SST archive
+          described below is served over, which is the sense in which this thread and the current
+          one are the same thread.</p>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="data">
+        <p class="eyebrow">Resources</p>
+        <h2>Data and software</h2>
+        <div class="prose">
+          <p>A recurring theme of my career: the science is only as good as the community's ability
+          to get at the data. Everything below is open and in active use.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Improved MODIS L2 SST archive</h3>
+            <p>More than 80 TB of reprocessed Level-2 sea surface temperature from MODIS Terra and
+            Aqua, spanning the full mission record, served over OPeNDAP so that users can subset
+            remotely rather than downloading whole granules.</p>
+            <p class="link"><a href="https://sst.uri.edu">sst.uri.edu</a></p>
+          </article>
+          <article class="card">
+            <h3>OPeNDAP</h3>
+            <p>The data access protocol described above: remote binary datasets read and subset
+            over the network as though they were local. Open source, widely deployed across the
+            earth science community, and the transport behind the SST archive.</p>
+            <p class="link"><a href="https://www.opendap.org">opendap.org</a> &middot; <a href="#opendap">background</a></p>
+          </article>
+          <article class="card">
+            <h3>Cayula–Cornillon front detection</h3>
+            <p>The histogram-based edge detection algorithm developed with J.-F. Cayula for SST
+            imagery, together with the companion sequential cloud-detection method. Both are
+            described in the publications listed here and have been independently reimplemented
+            many times over.</p>
+            <p class="link"><a href="publications.html#y1992">See publications, 1990&ndash;1996</a></p>
+          </article>
+          <article class="card">
+            <h3>Claude Switchboard</h3>
+            <p>A macOS status panel for running several AI coding sessions at once. It reports, at a
+            glance, every desktop on the machine, the project each one is working on, and which
+            sessions are running, finished, or stopped to ask a question. Written for my own use in
+            day-to-day research computing and released publicly.</p>
+            <p class="link"><a href="https://github.com/pcornillon/claude-switchboard">github.com/pcornillon/claude-switchboard</a></p>
+          </article>
+          <article class="card">
+            <h3>Claude configuration</h3>
+            <p>The working standard my AI-assisted research sessions run under: one rules file that
+            loads in every repository, a project template that gives each project the same spine of
+            status, decision, task and log files, and hooks that keep a record of what was done and
+            why. Assembled from a configuration in daily use on the projects described here.</p>
+            <p class="link"><a href="https://github.com/pcornillon/claude-config-public">github.com/pcornillon/claude-config-public</a></p>
+          </article>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="background">
+        <p class="eyebrow">Background</p>
+        <h2>Education and appointments</h2>
+        <div class="rows">
+          <div class="row"><span class="yr">1973</span><span class="what"><b>Ph.D., Experimental High Energy Physics</b> — Cornell University. Advisor: J. Orear.</span></div>
+          <div class="row"><span class="yr">1969</span><span class="what"><b>B.S., Engineering Physics</b> — Cornell University.</span></div>
+        </div>
+        <div class="rows" style="margin-top:1.5rem">
+          <div class="row"><span class="yr">2023–</span><span class="what"><b>Emeritus Professor of Oceanography</b>, University of Rhode Island</span></div>
+          <div class="row"><span class="yr">1990–2023</span><span class="what"><b>Professor of Oceanography</b>, University of Rhode Island</span></div>
+          <div class="row"><span class="yr">2000–2006</span><span class="what"><b>President</b>, Open Source Project for a Network Data Access Protocol (OPeNDAP)</span></div>
+          <div class="row"><span class="yr">1987–1990</span><span class="what">Associate Professor of Oceanography and Ocean Engineering, URI</span></div>
+          <div class="row"><span class="yr">1983–1987</span><span class="what">Associate Research Professor of Ocean Engineering and Oceanography, URI</span></div>
+          <div class="row"><span class="yr">1981–1983</span><span class="what">Assistant Research Professor of Ocean Engineering and Oceanography, URI</span></div>
+          <div class="row"><span class="yr">1980–1981</span><span class="what">Visiting Assistant Professor, Department of Meteorology and Physical Oceanography, MIT</span></div>
+          <div class="row"><span class="yr">1979–1986</span><span class="what">Partner and Senior Scientist, Applied Science Associates</span></div>
+          <div class="row"><span class="yr">1975–1980</span><span class="what">Assistant Research Professor of Ocean Engineering, URI</span></div>
+        </div>
+      </section>
+
+      <section id="service">
+        <p class="eyebrow">Service and teaching</p>
+        <h2>Selected activities</h2>
+        <div class="rows">
+          <div class="row"><span class="yr">ongoing</span><span class="what">Member, <b>GHRSST Science Team</b> (Group for High Resolution Sea Surface Temperature)</span></div>
+          <div class="row"><span class="yr">2009–2012</span><span class="what">Team lead, <b>NASA Sea Surface Temperature Science Team</b></span></div>
+          <div class="row"><span class="yr">2019–2022</span><span class="what">Created and taught the URI Grand Challenge course <b>“Envisioning the Future”</b>, averaging 110 students per offering</span></div>
+          <div class="row"><span class="yr">2018–2019</span><span class="what">Sabbatical at <b>NASA Jet Propulsion Laboratory</b> with Dimitris Menemenlis, working on SST in LLC4320 MITgcm output; machine learning coursework at Caltech</span></div>
+          <div class="row"><span class="yr">2011</span><span class="what">Co-chaired the URI Honors Colloquium “Are You Ready for the Future” and co-taught the companion honors course</span></div>
+          <div class="row"><span class="yr">30+ yrs</span><span class="what">Taught or co-taught at least one course every semester for over thirty years, across ten or more distinct preparations in physics, oceanography, and technology and the future</span></div>
+          <div class="row"><span class="yr">career</span><span class="what">Brought more than <b>$20M</b> in federal funding to the university for oceanographic research and distributed data systems</span></div>
+          <div class="row"><span class="yr">career</span><span class="what">Advised <b>11 Ph.D. and 8 M.S. students</b> and <b>8 postdoctoral scholars</b>; served on numerous data-related committees and science panels</span></div>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="rail" aria-label="At a glance">
+      <div class="rail-block">
+        <p class="eyebrow">At a glance</p>
+        <div class="stats">
+          <div class="stat"><span class="n">80+</span><span class="l">peer-reviewed publications and book chapters</span></div>
+          <div class="stat"><span class="n">80 TB</span><span class="l">reprocessed MODIS SST served publicly</span></div>
+          <div class="stat"><span class="n">50 yrs</span><span class="l">at URI Graduate School of Oceanography</span></div>
+        </div>
+      </div>
+      <div class="rail-block">
+        <p class="eyebrow">Links</p>
+        <ul>
+          <li><a href="publications.html">Full publication list</a></li>
+          <li><a href="https://sst.uri.edu">MODIS SST data server</a></li>
+          <li><a href="https://orcid.org/0000-0002-7296-3282">ORCID <span class="k">0000-0002-7296-3282</span></a></li>
+          <li><a href="https://web.uri.edu/gso/meet/peter-cornillon/">URI GSO faculty page</a></li>
+          <li><a href="https://www.ghrsst.org/about-ghrsst/science-team/peter-cornillon/">GHRSST Science Team</a></li>
+        </ul>
+      </div>
+      <div class="rail-block">
+        <p class="eyebrow">Working with me</p>
+        <ul>
+          <li>I am not currently taking on graduate students, but I am glad to hear from anyone
+          working with the MODIS SST archive, with front detection, or on SST uncertainty.</li>
+          <li><a href="mailto:pcornillon@uri.edu">pcornillon@uri.edu</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Peter Cornillon <span class="sep">·</span> Graduate School of Oceanography, University of Rhode Island</span>
+    <span class="mono">Updated September 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
